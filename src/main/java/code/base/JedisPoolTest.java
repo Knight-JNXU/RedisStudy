@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created by Knight_JXNU on 2016/10/25.
+ * 单个 Jedis 不是线程安全的，JedisPool 是线程安全的
  */
 public class JedisPoolTest {
     public static void main(String[] args){
