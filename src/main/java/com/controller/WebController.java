@@ -4,10 +4,7 @@ import com.model.WebModel;
 import com.service.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Knigh on 2016/11/14.
@@ -29,9 +26,9 @@ public class WebController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "/getweb", method = RequestMethod.GET)
-    public void getWeb() throws Exception{
+    public void getWeb(@RequestParam String des) throws Exception{
         System.out.println("output:");
-        System.out.println(webService.getWeb());
+        System.out.println(webService.getWeb(des));
     }
 
 }

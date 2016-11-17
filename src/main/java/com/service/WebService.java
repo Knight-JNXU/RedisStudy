@@ -26,7 +26,7 @@ public class WebService extends BaseService {
         }
     }
 
-    public String getWeb() throws Exception{
-        return webDao.getWeb().toString();
+    public String getWeb(String des) throws Exception{
+        return webDao.getWeb(des).toString();
     }
 }

@@ -18,8 +18,7 @@ public class WebDao extends BaseDao{
         }
     }
 
-    public WebModel getWeb() throws Exception{
-        Object o = get("baidu");
-        return (WebModel)o;
+    public WebModel getWeb(String des) throws Exception{
+        return new WebModel(des, (String)get(des));
     }
 }
