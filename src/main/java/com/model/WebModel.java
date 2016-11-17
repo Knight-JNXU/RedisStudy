@@ -32,4 +32,12 @@ public class WebModel extends BaseModel {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    @Override
+    public String toString() {
+        return "WebModel{" +
+                "des='" + des + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }
