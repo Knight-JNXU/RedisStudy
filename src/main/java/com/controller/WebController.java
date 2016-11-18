@@ -31,4 +31,12 @@ public class WebController extends BaseController {
         System.out.println(webService.getWeb(des));
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/webhset", method = RequestMethod.POST)
+    public void webhset(WebModel web) throws Exception{
+        System.out.println("webhset:");
+        System.out.println(web);
+        webService.saveWeb(web);
+    }
+
 }

@@ -21,4 +21,13 @@ public class WebDao extends BaseDao{
     public WebModel getWeb(String des) throws Exception{
         return new WebModel(des, (String)get(des));
     }
+
+    public void hset(WebModel webModel) throws Exception{
+        super.hset(webModel);
+    }
+
+    public WebModel hget(String key) throws Exception{
+        String url = super.hget(key, new WebModel().getField());
+        return new WebModel(key, url);
+    }
 }

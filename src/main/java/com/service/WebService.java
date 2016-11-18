@@ -29,4 +29,18 @@ public class WebService extends BaseService {
     public String getWeb(String des) throws Exception{
         return webDao.getWeb(des).toString();
     }
+
+    public String hset(WebModel web) throws Exception{
+        try {
+            webDao.hset(web);
+            return Constant.SUCCESS_MES;
+        }catch (Exception e){
+            e.printStackTrace();
+            return Constant.FAILED_MES;
+        }
+    }
+
+    public WebModel hget(String key) throws Exception{
+        return webDao.hget(key);
+    }
 }
