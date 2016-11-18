@@ -8,6 +8,8 @@ public class WebModel extends BaseModel {
     private String des;
     //网站url
     private String url;
+    //field
+    private final String field = "webinfo";
 
     public WebModel() {
     }
@@ -33,11 +35,16 @@ public class WebModel extends BaseModel {
         this.url = url;
     }
 
+    public String getField() {
+        return field;
+    }
+
     @Override
     public String toString() {
         return "WebModel{" +
                 "des='" + des + '\'' +
                 ", url='" + url + '\'' +
+                ", field='" + field + '\'' +
                 '}';
     }
 }

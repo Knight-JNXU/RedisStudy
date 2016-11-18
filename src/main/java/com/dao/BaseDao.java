@@ -1,6 +1,10 @@
 package com.dao;
 
+import com.model.WebModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
 
@@ -43,5 +47,39 @@ public class BaseDao {
      */
     protected void del(String key){
         redisTemplate.delete(key);
+    }
+
+    /**
+     *
+     * @param webModel
+     * @throws Exception
+     */
+    protected void hset(final WebModel webModel) throws Exception{
+        Object result = redisTemplate.execute(new RedisCallback<Object>() {
+            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
+                byte[] key = getRedisSerializer().serialize(webModel.getDes());
+                byte[] field = getRedisSerializer().serialize(webModel.getField());
+                byte[] value = getRedisSerializer().serialize(webModel.getUrl());
+                return redisConnection.hSet(key, field, value);
+            }
+        });
+    }
+
+    /**
+     *
+     * @param key
+     * @param field
+     * @return
+     * @throws Exception
+     */
+    protected String hget(final String key, final String field) throws Exception{
+        final byte[] valueByte = redisTemplate.execute(new RedisCallback<byte[]>() {
+            public byte[] doInRedis(RedisConnection redisConnection) throws DataAccessException {
+                byte[] keyByte = getRedisSerializer().serialize(key);
+                byte[] fieldByte = getRedisSerializer().serialize(field);
+                return redisConnection.hGet(keyByte, fieldByte);
+            }
+        });
+        return (new String(valueByte,"UTF-8"));
     }
 }
