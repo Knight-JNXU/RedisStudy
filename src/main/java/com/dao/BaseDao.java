@@ -77,7 +77,7 @@ public class BaseDao {
             public byte[] doInRedis(RedisConnection redisConnection) throws DataAccessException {
                 byte[] keyByte = getRedisSerializer().serialize(key);
                 byte[] fieldByte = getRedisSerializer().serialize(field);
-                return redisConnection.hGet(keyByte, fieldByte);
+                return redisConnection.hGet(fieldByte, keyByte);
             }
         });
         return (new String(valueByte,"UTF-8"));

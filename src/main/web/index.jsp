@@ -19,7 +19,7 @@
     <br><input type="submit" value="submit">
 </form>
 <h1>hget/hset</h1>
-<form action="<%=request.getContextPath()%>/web/input" method="post">
+<form action="<%=request.getContextPath()%>/web/webhset" method="post">
     input web:
     <p><label>url:</label><input type="text" name="url"></p>
     <p><label>des:</label><input type="text" name="des"></p>
