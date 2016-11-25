@@ -40,7 +40,7 @@ public class WebController extends BaseController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/webhget", method = RequestMethod.GET)
+    @RequestMapping(value = "/webhget", method = RequestMethod.POST)
     public void webhget(@RequestParam String des) throws Exception{
         System.out.println("webhget:");
         System.out.println(webService.hget(des));
