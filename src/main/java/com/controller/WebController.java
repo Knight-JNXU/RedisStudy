@@ -25,7 +25,7 @@ public class WebController extends BaseController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/getweb", method = RequestMethod.GET)
+    @RequestMapping(value = "/getweb", method = RequestMethod.POST)
     public void getWeb(@RequestParam String des) throws Exception{
         System.out.println("output:");
         System.out.println(webService.getWeb(des));
