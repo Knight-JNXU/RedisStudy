@@ -3,6 +3,8 @@ package com.dao;
 import com.model.WebModel;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by Knigh on 2016/11/16.
  */
@@ -29,5 +31,9 @@ public class WebDao extends BaseDao{
     public WebModel hget(String key) throws Exception{
         String url = super.hget(key, new WebModel().getField());
         return new WebModel(key, url);
+    }
+
+    public List<WebModel> like(String key) throws Exception{
+        return super.like(key);
     }
 }

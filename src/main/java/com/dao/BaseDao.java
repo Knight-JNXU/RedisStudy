@@ -8,6 +8,10 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Created by Knigh on 2016/11/14.
  */
@@ -81,5 +85,16 @@ public class BaseDao {
             }
         });
         return (new String(valueByte,"UTF-8"));
+    }
+
+    protected List<WebModel> like(String key) throws Exception{
+        Set<String> keys = redisTemplate.keys("*"+key+"*");
+        List<WebModel> list = new ArrayList<WebModel>();
+        for(String k : keys){
+            String u = (String) get(k);
+            WebModel temp = new WebModel(k, u);
+            list.add(temp);
+        }
+        return list;
     }
 }

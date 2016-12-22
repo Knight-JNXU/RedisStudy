@@ -6,6 +6,8 @@ import com.model.WebModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Knigh on 2016/11/16.
  */
@@ -42,5 +44,9 @@ public class WebService extends BaseService {
 
     public WebModel hget(String key) throws Exception{
         return webDao.hget(key);
+    }
+
+    public void weblike(String key) throws Exception{
+        System.out.println(webDao.like(key));
     }
 }

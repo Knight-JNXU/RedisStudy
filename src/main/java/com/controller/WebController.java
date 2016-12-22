@@ -46,4 +46,9 @@ public class WebController extends BaseController {
         System.out.println(webService.hget(des));
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/weblike", method = RequestMethod.GET)
+    public void weblike(@RequestParam String key) throws Exception{
+        webService.weblike(key);
+    }
 }
